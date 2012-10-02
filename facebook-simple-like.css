@@ -1,0 +1,17 @@
+/* Facebook Fan Box */
+.fan_box .connect_top{
+  background: none !important;
+  padding: 0 !important;
+}
+.fan_box .profileimage{
+  display: none; 
+}
+.fan_box .connect_action{
+  padding: 0 !important;
+} 
+.name_block > a {display:none !important;}
+.connect_type > a {display:none !important;}
+.connections {display:none !important;}
+
+/* Don't touch this line. The "border" (background-color) is set in the settings page of the plugin. */
+.full_widget {border:none !important; background-color: #FFFFFF !important; padding-left: 5px}

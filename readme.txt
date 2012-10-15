@@ -4,7 +4,7 @@ Donate link: http://www.mdpatrick.com/donate/
 Tags: facebook, like, social media, social, social bookmarking, fan, fan pages
 Stable tag: 1.0.4
 Requires at least: 3.1.2
-Tested up to: 3.1.3
+Tested up to: 3.4.2
 
 This allows you to create a fan page like button that has none of the fancy stuff normally that exists: stream, profile thumbnail, name. Button only.
 

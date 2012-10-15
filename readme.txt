@@ -2,7 +2,7 @@
 Contributors: mdanielpatrick
 Donate link: http://www.mdpatrick.com/donate/
 Tags: facebook, like, social media, social, social bookmarking, fan, fan pages
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires at least: 3.1.2
 Tested up to: 3.1.3
 
@@ -41,6 +41,9 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 
 = 1.0.1 =
 * Removed the __DIR__ constant to increase reverse compatibility with older versions of PHP. (__DIR__ is PHP 5.3 only. A little too fresh. Oops.)
+
+= 1.0.4 =
+* Added a nag notice in the admin area to remind you guys to rate the plugin after you're done installing it.
 
 == Installation ==
 

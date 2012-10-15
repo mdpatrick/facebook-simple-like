@@ -7,7 +7,6 @@ Author: Dan Patrick
 Description: Want to boost your Facebook fan page subscription rate? This plugin makes what should be an easy task, but isn't, an easy one. It enables you to use a shortcode to place a small like button where ever you like without the clutter: stream, faces, count, and all of the other junk that comes with the "fan page like box" ordinarily. Basically, it generates a fan page subscription button that looks *identical* to the one ordinarily only for *sharing* a page (as opposed to actually subscribing).
 */
 
-
 define('WIDGET_STYLESHEET_URL', plugins_url( 'facebook-simple-like.css', __FILE__) );
 define('WIDGET_STYLESHEET_PATH', dirname(__FILE__) . '/facebook-simple-like.css');
 
@@ -17,6 +16,8 @@ if (!isset($fsl_options['fsl_color']))
 
 function fsl_settings_page() { 
 global $fsl_options;
+
+
 
 // Below is actually what's displayed in the options page.
 ?>
@@ -138,4 +139,34 @@ if ( is_admin() ) {
     add_action( 'admin_menu', 'fsl_plugin_menu' );
     add_action( 'admin_init', 'fsl_admin_enqueue');
 }
+
+
+function rate_plugin_notice() {
+    if ($_GET['dismiss_rate_notice'] == '1') {
+        update_option('fsl_rate_notice_dismissed', '1');
+    } 
+
+    $rateNoticeDismissed = get_option('fsl_rate_notice_dismissed');
+    if ($rateNoticeDismissed != 1) { ?>
+       <div id="message" class="updated" ><p>
+        Please don't forget to rate Facebook Simple Like. <a href="http://wordpress.org/extend/plugins/facebook-simple-like" target="_blank" style="
+    border: 1px solid #777;
+    padding: 5px;
+    font-size:1.3em;
+    margin-left: 20px;
+    text-shadow: 3px 1px 10px black;
+    color: green;
+">rate now</a> <a href="options-general.php?page=fsl_options&dismiss_rate_notice=1" style="
+    border: 1px solid #777;
+    padding: 5px;
+    margin-left: 20px;
+    text-shadow: 3px 1px 10px black;
+    color: red;
+font-size: 1.3em;
+">dismiss notice</a>
+       </p></div>
+    <?php }
+}
+add_action( 'admin_notices', 'rate_plugin_notice' );
+
 ?>

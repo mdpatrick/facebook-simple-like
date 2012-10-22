@@ -2,11 +2,11 @@
 Contributors: mdanielpatrick
 Donate link: http://www.mdpatrick.com/donate/
 Tags: facebook, like, social media, social, social bookmarking, fan, fan pages
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 Requires at least: 3.1.2
 Tested up to: 3.4.2
 
-This allows you to create a fan page like button that has none of the fancy stuff normally that exists: stream, profile thumbnail, name. Button only.
+This allows you to create a fan page like button that has none of the fancy stuff normally that exists: stream, profile thumbnail, name. Button only. Enables widget & shortcodes to make the task easier.
 
 == Description ==
 
@@ -45,6 +45,13 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 = 1.0.4 =
 * Added a nag notice in the admin area to remind you guys to rate the plugin after you're done installing it.
 
+= 1.1.0 =
+* Added support for like buttons in the widgets area.
+* You can now automatically add like buttons (for your fan page) to the top or bottom (or both) of all of your posts and pages.
+* Added a demo area to the settings page.
+* Fixed bug where multiple like buttons caused things to get weird.
+* You no longer have to provide the profile id! This makes things MUCH easier.
+
 == Installation ==
 
 1. Download the plugin
@@ -53,7 +60,7 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 
 3. Activate the Plugin in WP-Admin.
 
-4. Go to your settings area and click the "Facebook Simple Like" settings page link, and enter the profile ID taken from the URL of your Facebook Fan page insights page, and also enter the URL of the front page of the Facebook Fan page in its appropriate fields.
+4. Go to your settings area and click the "Facebook Simple Like" settings page link, and enter the url for your fan page then you can use a widget in in your theme, or simply the shortcode: [facebooksimplelike]. It's that simple!
 
 == Frequently Asked Questions ==
 

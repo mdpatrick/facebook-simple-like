@@ -2,17 +2,13 @@
 <h3>Contact Author</h3>
 <form method="post" action="">
 <label for="subject">Regarding</label><br />
-<select name="subject">
+<select id="subject" name="subject">
     <option>Feedback</option>
     <option>Consultation Request</option>
     <option>Bug Report</option>
     <option>Feature Request</option>
 </select><br />
-<label for="comments">Message</label><br /><textarea id="comments" style="width:400px; height:100px" name="comments" placeholder="Blah, blah blah. opinions and one sentiment or another.
-
- sincerely,
-
-  Plugin User"></textarea>
+<label for="comments">Message</label><br /><textarea id="comments" style="width:400px; height:100px" name="comments" placeholder="Blah, blah blah. opinions and one sentiment or another. sincerely, Plugin User"></textarea>
 <input type="submit" class="submitbutton" value="Send Email" name="subscribe">
 </form>
 <br />
@@ -55,3 +51,4 @@ background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9
  </form>
  </div>
  </div>
+ <div style="clear:both;height:0;">&nbsp;</div>

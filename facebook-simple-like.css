@@ -14,4 +14,4 @@
 .connections {display:none !important;}
 
 /* Don't touch this line. The "border" (background-color) is set in the settings page of the plugin. */
-.full_widget {border:none !important; background-color: #FFFFFF !important; padding-left: 5px}
+.full_widget, .fb_iframe_width {border:none !important; background-color: #777777 !important; height: 34px !important; padding-left: 5px}

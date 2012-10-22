@@ -2,11 +2,10 @@
 /*
 Plugin Name: Facebook Simple Like
 Plugin URI: http://www.mdpatrick.com/2011/fsl/
-Version: 1.0.4
+Version: 1.1.0
 Author: Dan Patrick
-Description: Want to boost your Facebook fan page subscription rate? This plugin makes what should be an easy task, but isn't, an easy one. It enables you to use a shortcode to place a small like button where ever you like without the clutter: stream, faces, count, and all of the other junk that comes with the "fan page like box" ordinarily. Basically, it generates a fan page subscription button that looks *identical* to the one ordinarily only for *sharing* a page (as opposed to actually subscribing).
+Description: Want to boost your Facebook fan page subscription rate? This plugin makes what should be an easy task, but isn't, an easy one. It enables you to use a shortcode to place a small like button where ever you like without the clutter: stream, faces, count, and all of the other junk that comes with the "fan page like box" ordinarily. Basically, it generates a fan page subscription button that looks *identical* to the one ordinarily only for *sharing* a page (as opposed to actually subscribing). Enables shortcodes & widget.
 */
-
 define('WIDGET_STYLESHEET_URL', plugins_url( 'facebook-simple-like.css', __FILE__) );
 define('WIDGET_STYLESHEET_PATH', dirname(__FILE__) . '/facebook-simple-like.css');
 
@@ -14,76 +13,51 @@ $fsl_options = get_option( 'fsl_options' ); // This fails and displays error fir
 if (!isset($fsl_options['fsl_color']))
     $fsl_options['fsl_color'] = "#FFFFFF"; // Set default "border" color
 
-function fsl_settings_page() { 
-global $fsl_options;
-
-
-
-// Below is actually what's displayed in the options page.
-?>
-    <div class="wrap" style="margin-bottom:0;">
-    <h2>Facebook Simple Like Settings</h2>
-    <form method="post" action="options.php">
-    <?php settings_fields( 'fsl_options' ); // adds nonce ?>
-    <strong>Where You Can Find Your Fan Page Profile ID</strong><br />
-    <img src="<?php echo plugins_url( 'screenshot-3.png', __FILE__); ?>" /><br />
-    <label for="profile_id">Profile ID:</label>
-    <input id="profile_id" name="fsl_options[profile_id]" type="input" value="<?php echo $fsl_options['profile_id']; ?>" /> <br />
-    <label for="actual_url">Actual URL of Fan Page:</label>
-    <input id="actual_url" name="fsl_options[actual_url]" type="input" value="<?php echo $fsl_options['actual_url']; ?>" /> <br />
-    <label id="fsl_color">Background Color:</label>
-    <input id="fsl_color" name="fsl_options[fsl_color]" type="input" value="<?php echo $fsl_options['fsl_color']; ?>" /> <br />
-    <label for="widget_shortcodes_enable">Enable Shortcodes In Widgets?</label>
-    <input id="widget_shortcodes_enable" name="fsl_options[widget_shortcodes_enable]" type="checkbox" value="true" <?php if (isset($fsl_options['widget_shortcodes_enable'])) echo "checked"; ?> />
-    <div class="instructions"><p>After entering your profile ID and saving it you can then place your new fan page like button where ever you like with the shortcode <strong>[facebooksimplelike]</strong>, or if you have more than one fan page you'll be using like buttons for: <strong>[facebooksimplelike profile="12345678910" pageurl="http://www.facebook.com/mypage"]</strong>.</p></div>
-    <p class="submit"><input type="Submit" name="submit" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
-    </form>
-<?php
-    // Sends email, and prints response if contact form is used.
-    if (preg_match('/[A-Za-z]{4,15}/', $_POST['comments'])) {
-        $admin_email = get_option('admin_email');
-        wp_mail(
-            'dan@mdpatrick.com',                             //to
-            "{$_POST['subject']} - F.S.L.",                  //subject
-            "{$_POST['comments']}",                          //body
-            "From: $admin_email <$admin_email>"." \r\n"      //header
-            );
-        echo "<h2>Email sent!</h2><br />";
-        readfile( plugins_url( 'includes/helpmeout.php' , __FILE__ ) );
-    }
-    else {
-        // Prints contact form, newsletter, donate button, etc.
-        readfile( plugins_url( 'includes/helpmeout.php' , __FILE__ ) );
-    }
-} 
-
 // Enable shortcodes in widgets if requested.
 if (isset($fsl_options['widget_shortcodes_enable']))
     add_filter('widget_text', 'do_shortcode');
 
-function fsl_plugin_menu() {
-    $page = add_options_page( 'Facebook Simple Like Options', 'Facebook Simple Like', 'manage_options', 'fsl_options', 'fsl_settings_page' );
-    // page title, menu link anchor, capablity required, menu_slug unique identifier, function used for actual display of plugin page.
-    add_action( 'admin_print_styles-' . $page, 'fsl_admin_style_enqueue');
+
+// Automatically add like button to post if specified in options and like box exists.
+if ($fsl_options['add_like_to_post_bottom'] && $fsl_options['like_string']) {
+    add_filter('the_content', 'add_like_to_post_bottom');
+}
+if ($fsl_options['add_like_to_post_top'] && $fsl_options['like_string']) {
+    add_filter('the_content', 'add_like_to_post_top');
+}
+function add_like_to_post_bottom($postcontent) {
+    global $fsl_options;
+    $postcontent .= "<br />" . $fsl_options['like_string'];
+    return $postcontent;
+}
+function add_like_to_post_top($postcontent) {
+    global $fsl_options;
+    $content = $fsl_options['like_string'] . "<br />";
+    $content .= $postcontent;
+    return $content;
 }
 
-function fsl_admin_style_enqueue() {
-    wp_enqueue_style('fsl_admin_stylesheet');
+function add_fb_script_to_footer() {
+    echo '<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>';
 }
+add_action('wp_footer', 'add_fb_script_to_footer');
+add_action('admin_footer', 'add_fb_script_to_footer');
 
 function fsl_shortcode( $atts ) {
-global $fsl_options;
-        // $atts grabs all attributes (even non-existent ones), shortcode_atts filters
-        // for only what you need
+        global $fsl_options;
         extract( shortcode_atts( array('profile' => $fsl_options['profile_id'], 'pageurl' => $fsl_options['actual_url']), $atts ) );
-        $widget_stylesheet = constant("WIDGET_STYLESHEET_URL");
-        $nohash = substr($fsl_options['fsl_color'], 1); // Updates cache on stylesheet if color changed.
-        $intext = <<<FBFAN
-<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:fan href="{$pageurl}" width="60" height="34" show_faces="false" stream="false" header="false" profile_id="{$profile}" css="{$widget_stylesheet}?{$nohash}"></fb:fan>
-FBFAN;
-        return $intext;
+        $fsl_stored_like_strings = get_option('fsl_stored_like_strings');
+        if (is_array($fsl_stored_like_strings) && array_key_exists($pageurl, $fsl_stored_like_strings)) {
+            return $fsl_stored_like_strings[$pageurl];
+        } else {
+            if ($like_string = like_code_from_url($pageurl)) {
+                $fsl_stored_like_strings[$pageurl] = $like_string;
+                update_option('fsl_stored_like_strings', $fsl_stored_like_strings);
+                
+                return $like_string;
+            }
+        }
 }
-
 
 //[facebooksimplelike] is substituted with return string delivered by fsl_shortcode function 
 add_shortcode( 'facebooksimplelike', 'fsl_shortcode' );
@@ -97,76 +71,125 @@ function fsl_newcolor($newcolor) {
     file_put_contents(constant("WIDGET_STYLESHEET_PATH"), $fsl_stylesheet);
 }
 
-// ALL of the options array passes through this. This must be ammended for new options.
-function fsl_options_validation($input) {
-    $safe = array();
-    $input['profile_id'] = trim($input['profile_id']);
-    $input['actual_url'] = trim($input['actual_url']);
-    if (preg_match('/^.*?([\d]{3,20})[^\d]*$/', $input['profile_id'], $matches)) {
-        $safe['profile_id'] = $matches[1];
-    }
-//    if (preg_match('/^http.*?(\d{8,20})\/?$/', $input['profile_id'], $matches)) {
-//        $safe['profile_id'] = $matches[1];
-//    }
-    // This strips the trailing query string off the fan page URL.
-    if (preg_match('/(http[^? ]*)/', $input['actual_url'], $matches)) {
-        $safe['actual_url'] = $matches[1];
-    }
 
-    // Ensure color entered is an actual color.
-    if (preg_match('/(\#[0-9A-Fa-f]{3,6})/', $input['fsl_color'], $matches)) {
-        $safe['fsl_color'] = $matches[1];
-        // Make file changes in css file via custom function.
-        fsl_newcolor($matches[1]);
-    }
-
-//  $safe['actual_url'] = $input['actual_url'];
-    $safe['widget_shortcodes_enable'] = $input['widget_shortcodes_enable']; // no validation for this
-    return $safe;
-}
-
-// This registers the "settings" which are used to store the plugins various values.
-function fsl_admin_enqueue() {
-    // Sets up an "option group" to keep track of data submitted via options.php.
-    register_setting ( 'fsl_options', 'fsl_options', 'fsl_options_validation');//, 'fsl_options_validation' ); 
-    // Syntax: group name, option to save and sanitize, sanitizing function (optional)
-    
-    wp_register_style ('fsl_admin_stylesheet', WP_PLUGIN_URL . '/facebook-simple-like/includes/admin-stylesheet.css');
-}
-
-// If currently an admin, show the Facebook Subscription Surge option under the Settings section.
-if ( is_admin() ) {
-    add_action( 'admin_menu', 'fsl_plugin_menu' );
-    add_action( 'admin_init', 'fsl_admin_enqueue');
-}
-
-
+add_action( 'admin_notices', 'rate_plugin_notice' );
 function rate_plugin_notice() {
     if ($_GET['dismiss_rate_notice'] == '1') {
         update_option('fsl_rate_notice_dismissed', '1');
-    } 
+    } elseif ($_GET['remind_rate_later'] == '1') {
+        update_option('fsl_reminder_date', strtotime('+10 days'));
+    } else {
+	// If no dismiss & no reminder, this is fresh install. Lets give it a few days before nagging.
+	update_option('fsl_reminder_date', strtotime('+3 days'));
+    }
 
     $rateNoticeDismissed = get_option('fsl_rate_notice_dismissed');
-    if ($rateNoticeDismissed != 1) { ?>
+    $reminderDate = get_option('fsl_reminder_date');
+    if (!$rateNoticeDismissed && (!$reminderDate || ($reminderDate < strtotime('now')))) { ?>
        <div id="message" class="updated" ><p>
-        Please don't forget to rate Facebook Simple Like. <a href="http://wordpress.org/extend/plugins/facebook-simple-like" target="_blank" style="
+        Hey, you've been using <a href="admin.php?page=facebook-simple-like/fsl-settings.php">Facebook Simple Like</a> for a while. Will you please take a moment to rate it? <br /><br /><a href="http://wordpress.org/extend/plugins/facebook-simple-like" target="_blank" style="
     border: 1px solid #777;
     padding: 5px;
-    font-size:1.3em;
-    margin-left: 20px;
+    font-size:1.1em;
     text-shadow: 3px 1px 10px black;
     color: green;
-">rate now</a> <a href="options-general.php?page=fsl_options&dismiss_rate_notice=1" style="
+" onclick="jQuery.ajax({'type': 'get', 'url':'options-general.php?page=fsl_options&dismiss_rate_notice=1'});">sure, i'll rate it rate now</a>
+<a href="options-general.php?page=fsl_options&remind_rate_later=1" style="
     border: 1px solid #777;
     padding: 5px;
-    margin-left: 20px;
     text-shadow: 3px 1px 10px black;
-    color: red;
-font-size: 1.3em;
-">dismiss notice</a>
+    color: black;
+font-size: 1.1em;
+">remind me later</a>
        </p></div>
     <?php }
 }
-add_action( 'admin_notices', 'rate_plugin_notice' );
 
+
+// Establish options for settings page
+function register_fsl_settings() {
+    register_setting('fsl_options', 'fsl_options', 'fsl_options_validation');
+}
+// Validation options are passed through
+// ALL of the options array passes through this. This must be ammended for new options.  
+function fsl_options_validation($input) {  
+    $safe = array();  
+    $input['profile_id'] = trim($input['profile_id']);  
+    $input['actual_url'] = trim($input['actual_url']);  
+    if (preg_match('/^.*?([\d]{3,20})[^\d]*$/', $input['profile_id'], $matches)) {  
+        $safe['profile_id'] = $matches[1];  
+    }  
+    // This strips the trailing query string off the fan page URL.  
+    if (preg_match('/(http[^? ]*)/', $input['actual_url'], $matches)) {  
+        $safe['actual_url'] = $matches[1];  
+    }  
+  
+    // Ensure color entered is an actual color.  
+    if (preg_match('/(\#[0-9A-Fa-f]{3,6})/', $input['fsl_color'], $matches)) {  
+        $safe['fsl_color'] = $matches[1];  
+        // Make file changes in css file via custom function.  
+        fsl_newcolor($matches[1]);  
+    }  
+ 
+    $safe['widget_shortcodes_enable'] = $input['widget_shortcodes_enable']; // no validation for this  
+    $safe['add_like_to_post_top'] = $input['add_like_to_post_top']; // no validation for this  
+    $safe['add_like_to_post_bottom'] = $input['add_like_to_post_bottom']; // no validation for this  
+    
+    // Stores generated like_string from these inputs.
+    $safe['like_string'] = like_code_from_url($safe['actual_url'], $safe['fsl_color']);
+
+    return $safe;  
+} 
+ 
+
+// If currently an admin, show the Facebook Subscription Surge option under the Settings section.
+if ( is_admin() ) {
+    add_action( 'admin_menu', 'fsl_admin_menu', 9 );
+    add_action('admin_init', 'register_fsl_settings', 9);
+}
+
+function fsl_admin_menu() {
+        $icon = 'http://0.gravatar.com/avatar/89ba550ea497b0b1a329b4e9b10034b2?s=16&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&amp';
+	// plugins_url('facebook-simple-like/icon.png');
+	add_object_page('Facebook Simple Like', 'Facebook Like', 'edit_theme_options', 'facebook-simple-like/fsl-settings.php', '', $icon, 79);
+   	wp_register_style('fsl_admin_stylesheet', WP_PLUGIN_URL . '/facebook-simple-like/includes/admin-stylesheet.css');
+	add_action( 'admin_enqueue_scripts', 'fsl_enqueue_admin_scripts' );
+    //add_action( 'admin_print_styles-' . $page, 'fsl_admin_style_enqueue');
+}
+function fsl_enqueue_admin_scripts() {
+	wp_enqueue_style('fsl_admin_stylesheet');
+}
+
+require('fsl-widget.php');
+
+function extract_profileid_from_pageurl($pageurl) {
+	if (preg_match('/\/([^\/]+)(\?.*?)?$/', $pageurl, $matches)) {
+	    $pageidentifier = $matches[1];
+	    $fbpagehtml = file_get_contents('https://graph.facebook.com/'.$pageidentifier);
+        $json = json_decode($fbpagehtml, true);
+	    if ($json && isset($json['id'])) {
+            return $json['id'];
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+function like_code_from_url($pageurl, $css_suffix = null) {
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $pageurl)) {
+         return false;
+    }
+    if (!$profileid = extract_profileid_from_pageurl($pageurl)) {
+        return false;
+    }
+    if (!$css_suffix) {
+        $stylesheet = constant("WIDGET_STYLESHEET_URL") . '?' . rand(0,999999);
+    } else {
+            $stylesheet = constant("WIDGET_STYLESHEET_URL") . '?' . $css_suffix;
+    }
+        $like_string = '<fb:fan href="'.$pageurl.'" width="60" height="34" show_faces="false" stream="false" header="false" profile_id="'.$profileid.'" css="'.$stylesheet.'"></fb:fan>';
+        return $like_string;
+    }
 ?>

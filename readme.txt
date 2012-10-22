@@ -21,8 +21,9 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 = Features =
 
 * Create a like button that resembles the one that normally *shares* the current page (*as opposed to subscribing to fan page*).
-* Put the like button where ever you  want using the [facebooksimplelike] short code.
-* Easily customize the simple iframe background color.
+* Put the like button where ever you  want using the [facebooksimplelike] short code, or an easy-to-use sidebar or footer theme widget.
+* Add the like button to the top or bottom (or both!) of all of your posts and pages with the click of a checkbox on the settings page.
+* Create like buttons for as many different fan page destinations as you like. 
 
 == Screenshots ==
 

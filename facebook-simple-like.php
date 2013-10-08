@@ -65,7 +65,8 @@ add_shortcode( 'facebooksimplelike', 'fsl_shortcode' );
 // Changes the color in the stylesheet.
 function fsl_newcolor($newcolor) {
     //Open stylesheet, replace out whatever is there with the color that exists in $fsl_option['fsl_color']
-    $fsl_stylesheet = file_get_contents(constant("WIDGET_STYLESHEET_PATH"));
+    $fsl_stylesheet = wp_remote_get( constant( "WIDGET_STYLESHEET_PATH" ) );
+    $fsl_stylesheet = is_wp_error( $fsl_stylesheet ) ? '' : $fsl_stylesheet['body'];
     // $fsl_stylesheet = preg_replace('/(\.full_widget.*background-color: )(#\d{3,6})(.*?)$/', "/$1#".$fsl_option['fsl_color']."$3/", $fsl_stylesheet);
     $fsl_stylesheet = preg_replace('/(\.full_widget.*background-color: )(#[0-9A-Fa-f]{3,6})(.*?)$/', "$1".$newcolor."$3", $fsl_stylesheet);
     file_put_contents(constant("WIDGET_STYLESHEET_PATH"), $fsl_stylesheet);
@@ -165,7 +166,8 @@ require('fsl-widget.php');
 function extract_profileid_from_pageurl($pageurl) {
 	if (preg_match('/\/([^\/]+)(\?.*?)?$/', $pageurl, $matches)) {
 	    $pageidentifier = $matches[1];
-	    $fbpagehtml = file_get_contents('https://graph.facebook.com/'.$pageidentifier);
+	    $fbpagehtml = wp_remote_get('https://graph.facebook.com/'.$pageidentifier);
+	    $fbpagehtml = is_wp_error( $fbpagehtml ) ? '{}' : $fbpagehtml['body'];
         $json = json_decode($fbpagehtml, true);
 	    if ($json && isset($json['id'])) {
             return $json['id'];

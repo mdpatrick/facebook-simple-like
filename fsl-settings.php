@@ -9,8 +9,6 @@ global $fsl_options;
             <?php settings_fields( 'fsl_options' ); // adds nonce ?>
             <label for="actual_url">Default Fan Page URL:</label><br />
             <input id="actual_url" name="fsl_options[actual_url]" type="text" style="width:280px;" value="<?php echo $fsl_options['actual_url']; ?>" /> <br /><br />
-            <label for="fsl_color">Default Border Color:</label><br />
-            <input id="fsl_color" name="fsl_options[fsl_color]" type="text" style="width:60px;" value="<?php echo $fsl_options['fsl_color']; ?>" /> <br /><br />
             <label for="add_like_to_post_top">Automatically add like button to top of posts/pages</label><br />
             <input id="add_like_to_post_top" name="fsl_options[add_like_to_post_top]" type="checkbox" value="true" <?php if (isset($fsl_options['add_like_to_post_top'])) echo "checked"; ?> /><br /><br />
             <label for="add_like_to_post_bottom">Automatically add like button to bottom of posts/pages</label><br />

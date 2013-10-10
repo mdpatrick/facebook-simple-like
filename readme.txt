@@ -55,7 +55,10 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 
 = 1.1.1 =
 * Swapped out file_get_contents() with wp_remote_get(). (Thanks, [nikolov](https://github.com/nikolov-tmw)!)
-* CSS file is now dynamically generated via PHP. This prevents color setting form being overwritten on plugin update.
+* CSS file is now more straightforward.
+* Removed some code rendered unnecessary.
+* Restructured code to make it somewhat more readable. [Read it and send a PR on GitHub!](https://github.com/mdpatrick/facebook-simple-like)
+
 
 == Installation ==
 

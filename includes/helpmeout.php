@@ -31,24 +31,7 @@ background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9
     color: white;
 ">Urgent Notice!</h1>
 <a style="text-decoration:underline;" href="http://wordpress.org/extend/plugins/facebook-simple-like/" ><h1 style="text-shadow:0px 0px 10px #000; color:red;font-size:3em;text-decoration:none;">Rate this plugin, <span style="text-indent:15em;text-indent:-102px;display:block;padding-top:10px;">please.</span></h1></a>
-<br />... or ..<br />
-<p>drop me a note in that contact form to let me know how I can make improvements.</p>
-<p>You can also...</p>
-<form name="_xclick" target="paypal" action="" method="post">
-<input type="hidden" name="cmd" value="_cart">
-<input type="hidden" name="business" value="">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="item_name" value="$30 worth of support for any plugin Dan Patrick has created">
-<input type="hidden" name="amount" value="30.00">
-<input style="text-align:center;margin:auto;display:block;" type="button" data-src="http://www.paypal.com/en_US/i/btn/sc-but-01.gif" name="submit" value="Buy $30 worth of support for this plugin -- Paypal or Credit Card">
-<input type="hidden" name="add" value="1">
-</form>
 <p style="text-align:center;">Say hello to me on <a href="http://twitter.com/mdpatrick">Twitter</a>, or <a href="http://www.linkedin.com/in/mdanielpatrick">LinkedIn</a>.
 </p>
-<div style="margin:auto;text-align:center;"><form action="http://mdpatrick.us1.list-manage1.com/subscribe/post?u=3de34fa393a4f95b4d8f70e87&amp;id=7e4ff967dc" method="post" name="mc-embedded-subscribe-form">
-<span class="formidentifier">free copy of my ebook --></span> <input type="text" value="" placeholder="~~~~~ email@email.org ~~~~" name="EMAIL">
- <input type="submit" class="submitbutton" value="i want ebook" name="subscribe">
- </form>
- </div>
- </div>
+</div>
  <div style="clear:both;height:0;">&nbsp;</div>

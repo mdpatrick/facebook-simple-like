@@ -7,7 +7,7 @@ Author: Dan Patrick
 Description: Want to boost your Facebook fan page subscription rate? This plugin makes what should be an easy task, but isn't, an easy one. It enables you to use a shortcode to place a small like button where ever you like without the clutter: stream, faces, count, and all of the other junk that comes with the "fan page like box" ordinarily. Basically, it generates a fan page subscription button that looks *identical* to the one ordinarily only for *sharing* a page (as opposed to actually subscribing). Enables shortcodes & widget.
 */
 define('WIDGET_STYLESHEET_URL', plugins_url( 'facebook-simple-like.css', __FILE__) );
-define('WIDGET_STYLESHEET_PATH', dirname(__FILE__) . '/facebook-simple-like.css');
+wp_enqueue_style('facebooksimplelike_style', dirname(__FILE__) . '/facebook-simple-like.css');
 
 // Enable widget and admin settings area w/ form validation
 require('fsl-widget.php');

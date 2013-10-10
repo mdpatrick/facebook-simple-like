@@ -2,7 +2,7 @@
 /*
 Plugin Name: Facebook Simple Like
 Plugin URI: http://www.mdpatrick.com/2011/fsl/
-Version: 1.1.0
+Version: 1.1.1
 Author: Dan Patrick
 Description: Want to boost your Facebook fan page subscription rate? This plugin makes what should be an easy task, but isn't, an easy one. It enables you to use a shortcode to place a small like button where ever you like without the clutter: stream, faces, count, and all of the other junk that comes with the "fan page like box" ordinarily. Basically, it generates a fan page subscription button that looks *identical* to the one ordinarily only for *sharing* a page (as opposed to actually subscribing). Enables shortcodes & widget.
 */
@@ -68,7 +68,7 @@ function fsl_shortcode( $atts ) {
 //[facebooksimplelike] is substituted with return string delivered by fsl_shortcode function 
 
 function like_code_from_url($pageurl) {
-    $is_url = preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $pageurl)
+    $is_url = preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $pageurl);
     if (!$is_url || !$profileid = extract_profileid_from_pageurl($pageurl)) {
          return false;
     }

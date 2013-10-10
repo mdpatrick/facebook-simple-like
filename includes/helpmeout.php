@@ -8,11 +8,11 @@
     <option>Bug Report</option>
     <option>Feature Request</option>
 </select><br />
-<label for="comments">Message</label><br /><textarea id="comments" style="width:400px; height:100px" name="comments" placeholder="Blah, blah blah. opinions and one sentiment or another. sincerely, Plugin User"></textarea>
+<label for="comments">Message</label><br /><textarea id="comments" style="width:400px; height:100px" name="comments"></textarea>
 <input type="submit" class="submitbutton" value="Send Email" name="subscribe">
 </form>
 <br />
-<div style="text-align:center; background:url(../wp-content/plugins/facebook-simple-like/caution15percentheight100h.png) 277px 56px no-repeat;">
+<div style="text-align:center; background:url(../wp-content/plugins/facebook-simple-like/caution15percentheight100h.png) 277px 56px no-repeat; padding-bottom: 15px;">
 <h1 style="
     padding: 10px;
     display: block;

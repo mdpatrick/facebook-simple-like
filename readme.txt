@@ -4,7 +4,7 @@ Donate link: http://www.mdpatrick.com/donate/
 Tags: facebook, like, social media, social, social bookmarking, fan, fan pages
 Stable tag: 1.1.0
 Requires at least: 3.1.2
-Tested up to: 3.4.2
+Tested up to: 3.6.1
 
 This allows you to create a fan page like button that has none of the fancy stuff normally that exists: stream, profile thumbnail, name. Button only. Enables widget & shortcodes to make the task easier.
 
@@ -52,6 +52,10 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 * Added a demo area to the settings page.
 * Fixed bug where multiple like buttons caused things to get weird.
 * You no longer have to provide the profile id! This makes things MUCH easier.
+
+= 1.1.1 =
+* Swapped out file_get_contents() with wp_remote_get(). (Thanks, [nikolov](https://github.com/nikolov-tmw)!)
+* CSS file is now dynamically generated via PHP. This prevents color setting form being overwritten on plugin update.
 
 == Installation ==
 

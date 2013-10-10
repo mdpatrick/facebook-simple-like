@@ -10,7 +10,9 @@ This allows you to create a fan page like button that has none of the fancy stuf
 
 == Description ==
 
-**[For $30 I will add your feature and provide support.](http://www.mdpatrick.com/donate/)**
+Feature request?
+
+**[Consider dropping me a few bucks (donate page)](http://www.mdpatrick.com/donate/)**
 
 .. or ..
 
@@ -27,13 +29,9 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 
 == Screenshots ==
 
-1. The Facebook fan page like button with the default white (#FFFFFF) iframe background, contrasting with the ordinary look of the Facebook "like box."
+1. The simplified Facebook fan page like button (contrast with the ordinary look of the Facebook "like box.")
 2. The settings/configuration page for Facebook Simple Like.
 3. The profile pictures section of your facebook fan page, which is where you find the requisite "profile id" of your fan page.
-
-== Upgrade Notice ==
-= 1.0.0 =
-* Currently we're at first release. Future upgrade information will be listed here.
 
 == Changelog ==
 
@@ -55,7 +53,10 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 
 = 1.1.1 =
 * Swapped out file_get_contents() with wp_remote_get(). (Thanks, [nikolov](https://github.com/nikolov-tmw)!)
-* CSS file is now dynamically generated via PHP. This prevents color setting form being overwritten on plugin update.
+* CSS file is now more straightforward, defining border color unnecessary.
+* Removed some code rendered unnecessary.
+* Restructured code to make it somewhat more readable. [Read it and send a PR on GitHub!](https://github.com/mdpatrick/facebook-simple-like)
+
 
 == Installation ==
 

@@ -1,0 +1,77 @@
+/* Facebook Simple Like Options Page Styling */
+
+.fsl-options-table td {
+    padding: 20px;
+}
+
+[name="fsl_options[actual_url]"] {
+    width: 400px;
+}
+
+.instructions {
+    width: 450px;
+}
+
+#helpmeout {
+    width: 400px;
+    background-color: #FFFFFF;
+    border: 3px inset #00AAFF;
+    padding: 5px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px #000000;
+}
+
+#helpmeout h3 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.fsl-like-preview {
+    border: 1px solid black;
+    padding: 20px;
+    width: 260px;
+}
+
+.fsl-contact-box {
+    text-align: center;
+    background: url(../wp-content/plugins/facebook-simple-like/caution15percentheight100h.png) 277px 56px no-repeat;
+    padding-bottom: 15px;
+}
+
+.fsl-contact-box h1 {
+    padding: 10px;
+    display: block;
+    box-shadow: 0 0 14px black;
+    background: white;
+    border-radius: 30px 130px 30px 130px;
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e5799), color-stop(50%, #2989d8), color-stop(51%, #207cca), color-stop(100%, #7db9e8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* W3C */
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#1e5799', endColorstr = '#7db9e8', GradientType = 0); /* IE6-9 */;
+    color: white;
+}
+
+.fsl-urgent-rating {
+    text-decoration: none;
+}
+
+.fsl-urgent-rating h1 {
+    text-shadow: 0px 0px 10px #000;
+    color: red;
+    font-size: 3em;
+    text-decoration: none;
+}
+
+.fsl-urgent-rating em {
+    text-indent: 15em;
+    text-indent: -102px;
+    display: block;
+    padding-top: 10px;
+}

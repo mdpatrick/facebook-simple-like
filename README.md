@@ -3,7 +3,7 @@
 * Make it easier to setup a Facebook Fan Page "Like" button that more closely resembled the more simplified one used for "sharing" things on facebook.
 * Experiment with creating a WordPress plugin that incorporated a settings page.
 
-The CSS changes to necessary to actually remove things from the Like button (e.g. avatar, etc.) are pretty straightforward. 
+The CSS changes necessary to actually remove things from the Like button (e.g. avatar, etc.) are pretty straightforward. 
 
 That being said: the great thing about WordPress is that plugins for even simple tasks can get great uptake in the community because so many people turn to WordPress to *make their lives easier*. This plugin accomplishes that.
 

@@ -16,7 +16,6 @@
     <br/>
 
     <div class="fsl-contact-box">
-        <h1>Hey!</h1>
         <a class="fsl-urgent-rating" href="http://wordpress.org/extend/plugins/facebook-simple-like/"><h1
             style=>Rate this plugin, <em>please.</em></h1></a>
 

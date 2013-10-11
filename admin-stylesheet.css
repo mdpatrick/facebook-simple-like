@@ -59,7 +59,7 @@
 }
 
 .fsl-urgent-rating {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .fsl-urgent-rating h1 {

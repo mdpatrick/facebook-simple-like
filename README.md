@@ -7,10 +7,12 @@ The CSS changes to necessary to actually remove things from the Like button (e.g
 
 That being said: the great thing about WordPress is that plugins for even simple tasks can get great uptake in the community because so many people turn to WordPress to *make their lives easier*. This plugin accomplishes that.
 
+[View "Facebook Simple Like" in the WordPress.org Plugin Directory](http://wordpress.org/plugins/facebook-simple-like/)
+
 #### Todo
 * Add other features like additional shortcodes for allowing people to readily make use of some of the other useful widgets.
 * Continue to improve readability of code.
-* Convert existing code to make use of OOP. Most people use PHP 5.3 making it pretty safe at this point.
+* ???
 
 Got an idea? Submit a pull request.
 

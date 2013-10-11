@@ -46,7 +46,7 @@ global $fsl_options;
                 </td>
             </tr>
         </table>
-        <p class="submit"><input type="Submit" name="submit" value="<?php esc_attr_e('Save Changes'); ?>"/></p>
+        <p class="submit"><input type="Submit" name="submit" class="button" value="<?php esc_attr_e('Save Changes'); ?>"/></p>
     </form>
     <?php if ($fsl_options['like_string']) { ?>
     <div class="fsl-like-preview">

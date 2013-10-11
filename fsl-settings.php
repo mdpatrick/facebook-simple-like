@@ -8,13 +8,13 @@ global $fsl_options;
 
     <form method="post" action="options.php">
         <?php settings_fields('fsl_options'); // adds nonce ?>
-        <table>
+        <table class="fsl-options-table">
             <tr>
                 <td>
                     <label for="actual_url">Fan Page URL:</label><br/>
                 </td>
                 <td>
-                    <input id="actual_url" name="fsl_options[actual_url]" type="text" style="width:280px;"
+                    <input id="actual_url" name="fsl_options[actual_url]" type="text"
                            value="<?php echo $fsl_options['actual_url']; ?>"/>
                 </td>
             </tr>
@@ -62,8 +62,9 @@ global $fsl_options;
                 you want a simple like button for your fan page
             </li>
             <li>Use your theme's <a href="widgets.php">widgets interface</a> to add a like button</li>
-            <li>... or ... you can even place as many like buttons to as many fan pages as you like via the this shortcode syntax:<br/><strong>[facebooksimplelike
-                pageurl="http://www.facebook.com/mypage"]</strong></li>
+            <li>... or ... you can even place as many like buttons to as many fan pages as you like via the this
+                shortcode syntax:<br/><strong>[facebooksimplelike
+                    pageurl="http://www.facebook.com/mypage"]</strong></li>
         </ol>
         <br/>
         <hr/>

@@ -31,7 +31,6 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 
 1. The simplified Facebook fan page like button (contrast with the ordinary look of the Facebook "like box.")
 2. The settings/configuration page for Facebook Simple Like.
-3. The profile pictures section of your facebook fan page, which is where you find the requisite "profile id" of your fan page.
 
 == Changelog ==
 
@@ -57,7 +56,6 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 * Removed some code rendered unnecessary.
 * Restructured code to make it somewhat more readable. [Read it and send a PR on GitHub!](https://github.com/mdpatrick/facebook-simple-like)
 
-
 == Installation ==
 
 1. Download the plugin
@@ -77,12 +75,6 @@ A recent version of WordPress. The plugin doesn't do anything too fancy, so it p
 = Do you do WordPress consultation work? =
 
 Absolutely! I'm a Zend Certified PHP 5.3 engineer, and can customize or create WordPress plugins and themes. Visit http://www.mdpatrick.com or email me (see support, below) for more details.
-
-= Can I customize what is displayed? =
-
-Yes, you can edit the facebook-simple-like.css file, but pay attention to the comments found within. The border color, however, can be and should be modified from the Settings page of the plugin.
-
-For more information, please visit http://www.mdpatrick.com/fsl/
 
 = Support =
 

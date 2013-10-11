@@ -2,7 +2,7 @@
 Contributors: mdanielpatrick
 Donate link: http://www.mdpatrick.com/donate/
 Tags: facebook, like, social media, social, social bookmarking, fan, fan pages
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 Requires at least: 3.1.2
 Tested up to: 3.6.1
 
@@ -50,7 +50,7 @@ Want to boost your Facebook fan page subscription rate? This plugin makes what s
 * Fixed bug where multiple like buttons caused things to get weird.
 * You no longer have to provide the profile id! This makes things MUCH easier.
 
-= 1.1.1 =
+= 1.1.2 =
 * Swapped out file_get_contents() with wp_remote_get(). (Thanks, [nikolov](https://github.com/nikolov-tmw)!)
 * CSS file is now more straightforward, defining border color unnecessary.
 * Removed some code rendered unnecessary.

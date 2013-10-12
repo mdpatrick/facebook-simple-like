@@ -12,6 +12,7 @@ That being said: the great thing about WordPress is that plugins for even simple
 #### Todo
 * Add other features like additional shortcodes for allowing people to readily make use of some of the other useful widgets.
 * Continue to improve readability of code.
+* Add obviously lacking directory structure organization.
 * ???
 
 Got an idea? Submit a pull request.

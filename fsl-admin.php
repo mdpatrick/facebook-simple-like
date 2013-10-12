@@ -54,7 +54,7 @@ function rate_plugin_notice()
     text-shadow: 3px 1px 10px black;
     color: green;
 " onclick="jQuery.ajax({'type': 'get', 'url':'options-general.php?page=fsl_options&dismiss_rate_notice=1'});">sure, i'll
-        rate it rate now</a>
+        rate it right now</a>
         <a href="options-general.php?page=fsl_options&remind_rate_later=1" style="
     border: 1px solid #777;
     padding: 5px;
